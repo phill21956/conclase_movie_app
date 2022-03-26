@@ -1,3 +1,4 @@
+
 import 'package:conclase_movie_app/screen/movie_details/widgets/rating_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,11 +8,13 @@ class MoviesDetails extends StatelessWidget {
       {this.title1,
       this.title2,
       this.imageUrl,
+      this.addList,
       required this.ratings,
       Key? key})
       : super(key: key);
   final String? title1, title2, imageUrl;
   final double ratings;
+  final VoidCallback? addList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,7 @@ class MoviesDetails extends StatelessWidget {
                       Row(
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed:addList,
                               icon: const Icon(Icons.add_box_outlined)),
                           IconButton(
                               onPressed: () {},

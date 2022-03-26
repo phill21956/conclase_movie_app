@@ -7,10 +7,12 @@ class TrendingMoviesWidget extends StatelessWidget {
       {required this.title,
       required this.image,
       required this.ratings,
+      // required this.pgRatings,
       Key? key})
       : super(key: key);
   final String title, image;
   final double ratings;
+  // final String pgRatings;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +32,22 @@ class TrendingMoviesWidget extends StatelessWidget {
             // child: Image.network(mov.posterPath),
           ),
         ),
-        RatingCardWidget(rating: ratings),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade700,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: const Text('18+'),
+                )),
+            SizedBox(width: 15.w),
+            RatingCardWidget(rating: ratings),
+          ],
+        ),
         Text(title),
       ],
     );
