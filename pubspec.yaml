@@ -37,6 +37,8 @@ dependencies:
   http: ^0.13.4
   logging: ^1.0.2
   flutter_screenutil: ^5.3.1
+  sqflite: ^2.0.2
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:
