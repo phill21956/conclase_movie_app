@@ -54,7 +54,7 @@ class _TrendingMovieWidgetState extends State<TrendingMovieWidget>
                                           ratings: mov.voteAverage,
                                         )),
                               ),
-                              child: TrendingMoviesWidget(
+                              child: TrendingMoviesCardWidget(
                                 title: mov.title,
                                 image: baseImageURL + mov.posterPath,
                                 ratings: mov.voteAverage,

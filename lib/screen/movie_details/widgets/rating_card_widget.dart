@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RatingCardWidget extends StatelessWidget {
-  const RatingCardWidget({required this.rating, Key? key}) : super(key: key);
-  final double rating;
+  const RatingCardWidget({this.rating, Key? key}) : super(key: key);
+  final double? rating;
   @override
   Widget build(BuildContext context) {
     return Container(

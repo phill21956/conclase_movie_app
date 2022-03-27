@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-//import 'package:logging/logging.dart';
+import 'package:logging/logging.dart';
 import 'screen/home_page/home_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  setUpLogging();
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MyApp());
+}
+
+void setUpLogging() {
+  Logger.root.level = Level.ALL; // defaults to Level.INFO
+  Logger.root.onRecord.listen((record) {
+    // ignore: avoid_print
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
 }
 
 class MyApp extends StatelessWidget {

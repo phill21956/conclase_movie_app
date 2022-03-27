@@ -2,16 +2,16 @@ import 'package:conclase_movie_app/screen/movie_details/widgets/rating_card_widg
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TrendingMoviesWidget extends StatelessWidget {
-  const TrendingMoviesWidget(
+class TrendingMoviesCardWidget extends StatelessWidget {
+  const TrendingMoviesCardWidget(
       {required this.title,
       required this.image,
-      required this.ratings,
+       this.ratings,
       // required this.pgRatings,
       Key? key})
       : super(key: key);
   final String title, image;
-  final double ratings;
+  final double? ratings;
   // final String pgRatings;
   @override
   Widget build(BuildContext context) {

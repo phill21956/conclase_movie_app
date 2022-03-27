@@ -19,6 +19,7 @@ class MovieDatabase {
       CREATE TABLE movie(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
+        title2 TEXT,
         image TEXT,
         ratings TEXT,
         isChecked INTEGER
@@ -44,6 +45,16 @@ class MovieDatabase {
     );
   }
 
+  Future<void> updateMovie(Movie movie) async {
+    final db = await database;
+    await db.update(
+      'movies',
+      movie.toMap(),
+      where: 'id == ?',
+      whereArgs: [movie.id],
+    );
+  }
+
   Future<List<Movie>> getMovie() async {
     final db = await database;
     List<Map<String, dynamic>> items = await db.query(
@@ -56,8 +67,9 @@ class MovieDatabase {
       (i) => Movie(
           id: items[i]['id'],
           title: items[i]['title'],
+          movieOverview: items[i]['title2'],
           image: items[i]['image'],
-          ratings: items[i]['ratings'],
+          //  ratings: items[i]['ratings'],
           isChecked: items[i]['isChecked'] == 1 ? true : false),
     );
   }

@@ -67,7 +67,7 @@ class TrendingResult {
   final String posterPath;
   final DateTime? firstAirDate;
   final int? id;
-  final String? overview;
+  final String overview;
   final int? voteCount;
   final double voteAverage;
   final List<int> genreIds;

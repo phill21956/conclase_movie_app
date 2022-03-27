@@ -1,19 +1,23 @@
+import 'package:conclase_movie_app/database/db_model.dart';
+import 'package:conclase_movie_app/database/db_movie_model.dart';
 import 'package:conclase_movie_app/screen/movie_details/widgets/rating_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MoviesDetails extends StatelessWidget {
-  const MoviesDetails(
-      {this.title1,
-      this.title2,
-      this.imageUrl,
+  MoviesDetails(
+      {required this.title1,
+      required this.title2,
+      required this.imageUrl,
       // this.addList,
-      required this.ratings,
+       this.ratings,
       Key? key})
       : super(key: key);
-  final String? title1, title2, imageUrl;
-  final double ratings;
+  final String title1, imageUrl;
+  final String title2;
+  final double? ratings;
   // final VoidCallback? addList;
+  final db = MovieDatabase();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +37,7 @@ class MoviesDetails extends StatelessWidget {
                           color: Colors.grey,
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
-                            image: NetworkImage(imageUrl!),
+                            image: NetworkImage(imageUrl),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -63,10 +67,23 @@ class MoviesDetails extends StatelessWidget {
                       Row(
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await db.insertMovie(Movie(
+                                  movieOverview: title2,
+                                    title: title1,
+                                    image: imageUrl,
+                                    //ratings: ratings,
+                                    isChecked: false));
+                              },
                               icon: const Icon(Icons.add_box_outlined)),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await db.deleteMovie(Movie(
+                                 movieOverview:title2 ,
+                                    title: title1,
+                                    image: imageUrl,
+                                    isChecked: false));
+                              },
                               icon: const Icon(Icons.send_outlined)),
                         ],
                       )
@@ -74,7 +91,7 @@ class MoviesDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 40.h),
                   Text(
-                    title1!,
+                    title1,
                     style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
@@ -83,7 +100,7 @@ class MoviesDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   Text(
-                    title2!,
+                    title2,
                     style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.grey.shade300,

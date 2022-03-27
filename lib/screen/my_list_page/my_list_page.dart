@@ -1,3 +1,4 @@
+import 'package:conclase_movie_app/database/db_movie_model.dart';
 import 'package:conclase_movie_app/model/movie_model.dart';
 import 'package:conclase_movie_app/screen/movie_page/widgets/trending_movies.dart';
 import 'package:conclase_movie_app/services/http_call.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../const/key.dart';
+import '../../database/db_model.dart';
+import '../movie_details/movie_details.dart';
 
 class MyListPage extends StatefulWidget {
   const MyListPage({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class MyListPage extends StatefulWidget {
 
 class _MyListPageState extends State<MyListPage> with MovieApi {
   late Future<MovieModel> _movieList;
-
+final db = MovieDatabase();
   @override
   void initState() {
     _movieList = getMovies();
@@ -25,12 +28,12 @@ class _MyListPageState extends State<MyListPage> with MovieApi {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: _movieList,
-        builder: (context, AsyncSnapshot<MovieModel> snapshot) {
+      body: FutureBuilder<List<Movie>>(
+        future: db.getMovie(),
+        builder: (context, AsyncSnapshot<List<Movie>> snapshot) {
           if (snapshot.hasData) {
-            List<Result>? moviesCatalog =
-                snapshot.data!.results.map((movies) => movies).toList();
+            List<Movie>? moviesCatalog =
+                snapshot.data!.map((movies) => movies).toList();
             return SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,11 +55,24 @@ class _MyListPageState extends State<MyListPage> with MovieApi {
                       //scrollDirection: Axis.vertical,
                       physics: const ScrollPhysics(),
                       children: moviesCatalog
-                          .map((mov) => TrendingMoviesWidget(
-                                title: mov.title,
-                                image: baseImageURL + mov.posterPath,
-                                ratings: mov.voteAverage,
-                              ))
+                          .map((mov) => GestureDetector(
+                            onTap: ()=> Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => MoviesDetails(
+                                          title1: mov.title,
+                                          title2: mov.movieOverview,
+                                          imageUrl:
+                                              baseImageURL + mov.image,
+                                          //ratings: mov.ratings,
+                                        )),
+                              ),
+                            child: TrendingMoviesCardWidget(
+                                  title: mov.title,
+                                  image: baseImageURL + mov.image,
+                                  ratings: mov.ratings,
+                          
+                                ),
+                          ))
                           .toList()),
                 ]));
           } else if (snapshot.hasError) {
