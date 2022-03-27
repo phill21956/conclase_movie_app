@@ -9,7 +9,7 @@ class RatingCardWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey.shade700,
+        color: Colors.grey.shade800,
       ),
       child: Padding(
         padding: EdgeInsets.all(5.r),
