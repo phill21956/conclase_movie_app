@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(0xff0D0F14),
         appBar: AppBar(
+          backgroundColor: const Color(0xff0D0F14),
           elevation: 0,
           bottom: const TabBar(indicatorColor: Color(0xffF3AC4A), tabs: [
             Tab(text: 'Movies'),
