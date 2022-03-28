@@ -10,7 +10,7 @@ class MoviesDetails extends StatelessWidget {
       required this.title2,
       required this.imageUrl,
       // this.addList,
-       this.ratings,
+      this.ratings,
       Key? key})
       : super(key: key);
   final String title1, imageUrl;
@@ -69,17 +69,22 @@ class MoviesDetails extends StatelessWidget {
                           IconButton(
                               onPressed: () async {
                                 await db.insertMovie(Movie(
-                                  movieOverview: title2,
+                                    movieOverview: title2,
                                     title: title1,
                                     image: imageUrl,
                                     //ratings: ratings,
                                     isChecked: false));
+                                const snackBar = SnackBar(
+                                  content: Text('Added to My List!'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               },
                               icon: const Icon(Icons.add_box_outlined)),
                           IconButton(
                               onPressed: () async {
                                 await db.deleteMovie(Movie(
-                                 movieOverview:title2 ,
+                                    movieOverview: title2,
                                     title: title1,
                                     image: imageUrl,
                                     isChecked: false));
