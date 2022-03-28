@@ -18,7 +18,7 @@ class MyListPage extends StatefulWidget {
 
 class _MyListPageState extends State<MyListPage> with MovieApi {
   late Future<MovieModel> _movieList;
-final db = MovieDatabase();
+  final db = MovieDatabase();
   @override
   void initState() {
     _movieList = getMovies();
@@ -56,23 +56,22 @@ final db = MovieDatabase();
                       physics: const ScrollPhysics(),
                       children: moviesCatalog
                           .map((mov) => GestureDetector(
-                            onTap: ()=> Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => MoviesDetails(
-                                          title1: mov.title,
-                                          title2: mov.movieOverview,
-                                          imageUrl:
-                                              baseImageURL + mov.image,
-                                          //ratings: mov.ratings,
-                                        )),
-                              ),
-                            child: TrendingMoviesCardWidget(
+                                onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => MoviesDetails(
+                                            id: mov.id,
+                                            title1: mov.title,
+                                            title2: mov.movieOverview,
+                                            imageUrl: baseImageURL + mov.image,
+                                            //ratings: mov.ratings,
+                                          )),
+                                ),
+                                child: TrendingMoviesCardWidget(
                                   title: mov.title,
                                   image: baseImageURL + mov.image,
                                   ratings: mov.ratings,
-                          
                                 ),
-                          ))
+                              ))
                           .toList()),
                 ]));
           } else if (snapshot.hasError) {

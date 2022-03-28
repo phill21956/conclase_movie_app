@@ -6,13 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MoviesDetails extends StatelessWidget {
   MoviesDetails(
-      {required this.title1,
+      {this.movie,
+      this.id,
+      required this.title1,
       required this.title2,
       required this.imageUrl,
       // this.addList,
       this.ratings,
       Key? key})
       : super(key: key);
+  final Movie? movie;
+  final int? id;
   final String title1, imageUrl;
   final String title2;
   final double? ratings;
@@ -69,6 +73,7 @@ class MoviesDetails extends StatelessWidget {
                           IconButton(
                               onPressed: () async {
                                 await db.insertMovie(Movie(
+                                    id: id,
                                     movieOverview: title2,
                                     title: title1,
                                     image: imageUrl,
@@ -84,10 +89,16 @@ class MoviesDetails extends StatelessWidget {
                           IconButton(
                               onPressed: () async {
                                 await db.deleteMovie(Movie(
-                                    movieOverview: title2,
+                                    id: id,
                                     title: title1,
+                                    movieOverview: title2,
                                     image: imageUrl,
                                     isChecked: false));
+                                const snackBar = SnackBar(
+                                  content: Text('Removed from My List!'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               },
                               icon: const Icon(Icons.send_outlined)),
                         ],

@@ -47,6 +47,7 @@ class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget>
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => MoviesDetails(
+                                      id: mov.id,
                                           title1: mov.title,
                                           title2: mov.overview,
                                           imageUrl:
