@@ -1,45 +1,45 @@
+import 'package:conclase_movie_app/model/trending_movie_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../const/key.dart';
-import '../../../model/upcoming_movie_model.dart';
-import '../../../services/http_call.dart';
-import '../../movie_details/movie_details.dart';
-import 'movies_content.dart';
+import '../../../../const/key.dart';
+import '../../../../services/http_call.dart';
+import '../../../movie_details/movie_details.dart';
+import '../trending_movies.dart';
 
-class UpcomingMoviesWidget extends StatefulWidget {
-  const UpcomingMoviesWidget({
+class TrendingMovieWidget extends StatefulWidget {
+  const TrendingMovieWidget({
     Key? key,
-  //  required this.moviesCatalog,
+    // required this.moviesCatalog,
   }) : super(key: key);
 
-//  final List<Results>? moviesCatalog;
+  // final List<Result>? moviesCatalog;
 
   @override
-  State<UpcomingMoviesWidget> createState() => _UpcomingMoviesWidgetState();
+  State<TrendingMovieWidget> createState() => _TrendingMovieWidgetState();
 }
 
-class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget>
+class _TrendingMovieWidgetState extends State<TrendingMovieWidget>
     with MovieApi {
-  late Future<UpcomingMoviesModel> _upcomingMoviesList;
+  late Future<TrendingMovieModel> _movieList;
   @override
   void initState() {
-    _upcomingMoviesList = getUpcomingMovies();
-    // _movieList = getMovies();
+    // _upcomingMoviesList = getUpcomingMovies();
+    _movieList = trendingMovies();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _upcomingMoviesList,
-        builder: (context, AsyncSnapshot<UpcomingMoviesModel> snapshot) {
+        future: _movieList,
+        builder: (context, AsyncSnapshot<TrendingMovieModel> snapshot) {
           if (snapshot.hasData) {
-            List<Results>? moviesCatalog =
+            List<TrendingResult>? trendingMoviesCatalog =
                 snapshot.data!.results.map((movies) => movies).toList();
             return Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: moviesCatalog
+                children: trendingMoviesCatalog
                     .map((mov) => Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -47,17 +47,18 @@ class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget>
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => MoviesDetails(
-                                      id: mov.id,
+                                          id: mov.id,
                                           title1: mov.title,
                                           title2: mov.overview,
                                           imageUrl:
-                                              baseImageURL + mov.backdropPath,
+                                              baseImageURL + mov.posterPath,
                                           ratings: mov.voteAverage,
                                         )),
                               ),
-                              child: MoviesContentWidget(
+                              child: TrendingMoviesCardWidget(
                                 title: mov.title,
-                                image: baseImageURL + mov.backdropPath,
+                                image: baseImageURL + mov.posterPath,
+                                ratings: mov.voteAverage,
                               ),
                             ),
                           ],
