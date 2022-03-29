@@ -13,7 +13,7 @@ class MoviesDetails extends StatelessWidget {
       required this.title2,
       required this.imageUrl,
       // this.addList,
-      this.ratings,
+      required this.ratings,
       Key? key})
       : super(key: key);
   final Movie? movie;
@@ -96,6 +96,7 @@ class MoviesDetails extends StatelessWidget {
                                     id: id,
                                     title: title1,
                                     movieOverview: title2,
+                                    ratings: ratings,
                                     image: imageUrl,
                                     isChecked: false));
                                 const snackBar = SnackBar(

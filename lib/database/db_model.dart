@@ -21,7 +21,7 @@ class MovieDatabase {
         title TEXT,
         title2 TEXT,
         image TEXT,
-        ratings TEXT,
+        ratings REAL,
         isChecked INTEGER
       )
      ''');
@@ -48,7 +48,7 @@ class MovieDatabase {
   Future<void> updateMovie(Movie movie) async {
     final db = await database;
     await db.update(
-      'movies',
+      'movie',
       movie.toMap(),
       where: 'id == ?',
       whereArgs: [movie.id],
@@ -69,7 +69,7 @@ class MovieDatabase {
           title: items[i]['title'],
           movieOverview: items[i]['title2'],
           image: items[i]['image'],
-          //  ratings: items[i]['ratings'],
+            ratings: items[i]['ratings'],
           isChecked: items[i]['isChecked'] == 1 ? true : false),
     );
   }

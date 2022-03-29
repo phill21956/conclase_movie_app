@@ -21,13 +21,13 @@ class Movie {
       'title': title,
       'title2': movieOverview,
       'image': image,
-      'ratings': ratings,
+      'ratings': ratings.toString(),
       'isChecked': isChecked ? 1 : 0,
     };
   }
 
   @override
   String toString() {
-    return 'Todo(id : $id, title: $title, title: $movieOverview, image: $image, ratings: $ratings, isChecked: $isChecked)';
+    return 'movie(id : $id, title: $title, title: $movieOverview, image: $image, ratings: $ratings, isChecked: $isChecked)';
   }
 }
