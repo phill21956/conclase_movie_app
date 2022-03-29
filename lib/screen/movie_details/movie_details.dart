@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conclase_movie_app/database/db_model.dart';
 import 'package:conclase_movie_app/database/db_movie_model.dart';
 import 'package:conclase_movie_app/screen/movie_details/widgets/rating_card_widget.dart';
@@ -34,16 +35,19 @@ class MoviesDetails extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: EdgeInsets.all(10.r),
-                    child: Container(
-                      width: 390.w,
-                      height: 470.h,
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(5),
-                          image: DecorationImage(
-                            image: NetworkImage(imageUrl),
-                            fit: BoxFit.cover,
-                          )),
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      imageBuilder: (context, imageProvider) => Container(
+                        width: 390.w,
+                        height: 470.h,
+                        decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            )),
+                      ),
                     ),
                   ),
                 ),
@@ -77,7 +81,7 @@ class MoviesDetails extends StatelessWidget {
                                     movieOverview: title2,
                                     title: title1,
                                     image: imageUrl,
-                                    //ratings: ratings,
+                                    ratings: ratings,
                                     isChecked: false));
                                 const snackBar = SnackBar(
                                   content: Text('Added to My List!'),

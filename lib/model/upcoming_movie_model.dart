@@ -13,7 +13,7 @@ String upcomingMoviesModelToJson(UpcomingMoviesModel data) =>
 
 class UpcomingMoviesModel {
   UpcomingMoviesModel({
-     required this.dates,
+    this.dates,
     required this.page,
     required this.results,
     required this.totalPages,
@@ -28,7 +28,7 @@ class UpcomingMoviesModel {
 
   factory UpcomingMoviesModel.fromJson(Map<String, dynamic> json) =>
       UpcomingMoviesModel(
-        dates: json["dates"],
+        dates: json["dates"].toString(),
         page: json["page"],
         results:
             List<Results>.from(json["results"].map((x) => Results.fromJson(x))),

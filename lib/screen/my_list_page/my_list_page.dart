@@ -1,10 +1,8 @@
 import 'package:conclase_movie_app/database/db_movie_model.dart';
-import 'package:conclase_movie_app/model/movie_model.dart';
 import 'package:conclase_movie_app/screen/movie_page/widgets/trending_movies.dart';
 import 'package:conclase_movie_app/services/http_call.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../const/key.dart';
 import '../../database/db_model.dart';
 import '../movie_details/movie_details.dart';
@@ -17,13 +15,13 @@ class MyListPage extends StatefulWidget {
 }
 
 class _MyListPageState extends State<MyListPage> with MovieApi {
-  late Future<MovieModel> _movieList;
+  // late Future<MovieModel> _movieList;
   final db = MovieDatabase();
   @override
-  void initState() {
-    _movieList = getMovies();
-    super.initState();
-  }
+  // void initState() {
+  //   _movieList = getMovies();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +61,7 @@ class _MyListPageState extends State<MyListPage> with MovieApi {
                                             title1: mov.title,
                                             title2: mov.movieOverview,
                                             imageUrl: baseImageURL + mov.image,
-                                            //ratings: mov.ratings,
+                                            ratings: mov.ratings,
                                           )),
                                 ),
                                 child: TrendingMoviesCardWidget(

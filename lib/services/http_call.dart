@@ -8,28 +8,30 @@ import '../const/key.dart';
 import '../model/movie_model.dart';
 
 mixin MovieApi {
-  Future<MovieModel> getMovies() async {
-    Response response = await get(Uri.parse(movieURL));
-    if (response.statusCode == 200) {
-      var body = jsonDecode(response.body);
+  // Future<MovieModel> getMovies() async {
+  //   Response response = await get(Uri.parse(movieURL));
+  //   if (response.statusCode == 200) {
+  //     var body = jsonDecode(response.body);
 
-      var movieList = MovieModel.fromJson(body);
-      return movieList;
-    } else {
-      throw "Unable to retrieve posts.";
-    }
-  }
+  //     var movieList = MovieModel.fromJson(body);
+  //     return movieList;
+  //   } else {
+  //     throw "Unable to retrieve posts.";
+  //   }
+  // }
 
   Future<UpcomingMoviesModel> getUpcomingMovies() async {
-    Response response = await get(Uri.parse(movieURL));
-    if (response.statusCode == 200) {
-      var body = jsonDecode(response.body);
+    
+      Response response = await get(Uri.parse(upcomingMovieURL));
+      if (response.statusCode == 200) {
+        var body = jsonDecode(response.body);
 
-      var upcomingMovieList = UpcomingMoviesModel.fromJson(body);
-      return upcomingMovieList;
-    } else {
-      throw "Unable to retrieve posts.";
-    }
+        var upcomingMovieList = UpcomingMoviesModel.fromJson(body);
+        return upcomingMovieList;
+      } else {
+        throw "Unable to retrieve posts.";
+      }
+    
   }
 
   Future<TrendingMovieModel> trendingMovies() async {

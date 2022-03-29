@@ -2,7 +2,7 @@ import 'package:conclase_movie_app/database/db_movie_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../model/movie_model.dart';
+
 
 class MovieDatabase {
   Database? _database;
