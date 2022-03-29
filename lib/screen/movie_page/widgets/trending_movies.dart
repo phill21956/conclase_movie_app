@@ -22,14 +22,14 @@ class TrendingMoviesCardWidget extends StatelessWidget {
           padding: EdgeInsets.all(10.r),
           child: CachedNetworkImage(
             imageUrl: image,
-            imageBuilder: (context,imageProvider)=> Container(
+            imageBuilder: (context, imageProvider) => Container(
               width: 154,
               height: 190,
               decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image:imageProvider,
+                    image: imageProvider,
                     fit: BoxFit.cover,
                   )),
               // child: Image.network(mov.posterPath),
@@ -39,16 +39,6 @@ class TrendingMoviesCardWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey.shade800,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: const Text('18+'),
-                )),
-            SizedBox(width: 15.w),
             RatingCardWidget(rating: ratings),
           ],
         ),
