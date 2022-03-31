@@ -51,13 +51,13 @@ class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget>
                                           title1: mov.title,
                                           title2: mov.overview,
                                           imageUrl:
-                                              baseImageURL + mov.backdropPath,
+                                              baseImageURL + mov.backdropPath!,
                                           ratings: mov.voteAverage,
                                         )),
                               ),
                               child: MoviesContentWidget(
                                 title: mov.title,
-                                image: baseImageURL + mov.backdropPath,
+                                image: baseImageURL + mov.backdropPath!,
                               ),
                             ),
                           ],

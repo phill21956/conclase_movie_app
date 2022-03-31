@@ -5,7 +5,7 @@ import 'package:conclase_movie_app/model/upcoming_movie_model.dart';
 import 'package:http/http.dart';
 
 import '../const/key.dart';
-import '../model/movie_model.dart';
+
 
 mixin MovieApi {
   // Future<MovieModel> getMovies() async {
