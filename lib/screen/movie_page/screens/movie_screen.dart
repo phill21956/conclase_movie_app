@@ -26,7 +26,7 @@ class _MovieScreenState extends State<MovieScreen> with MovieApi {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                  padding: EdgeInsets.fromLTRB(25.r, 35.r, 0.r, 20.r),
+                  padding: EdgeInsets.fromLTRB(25.r, 35.r, 0.r, 10.r),
                   child: const MovieTextWidget(title: 'Coming Soon')),
               const UpcomingMoviesWidget(),
               Padding(
