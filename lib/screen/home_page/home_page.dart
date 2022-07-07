@@ -1,7 +1,8 @@
 import 'package:conclase_movie_app/screen/my_list_page/my_list_page.dart';
 import 'package:flutter/material.dart';
 import '../movie_page/movie_page.dart';
-import '../movie_search_page/widget/movie_search.dart';
+import '../movie_search_page/movie_search.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

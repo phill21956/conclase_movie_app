@@ -105,7 +105,8 @@ class MoviesDetails extends StatelessWidget {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
                               },
-                              icon: const Icon(Icons.send_outlined)),
+                              icon: const Icon(
+                                  Icons.remove_circle_outline_outlined)),
                         ],
                       )
                     ],

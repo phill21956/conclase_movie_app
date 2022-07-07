@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../const/key.dart';
 import '../../../../model/search_model.dart';
-import '../../../movie_details/movie_details.dart';
-import '../../../movie_page/widgets/trending_movies.dart';
+import '../../movie_details/movie_details.dart';
+import '../../movie_page/widgets/trending_movies.dart';
 
 class BuildResults extends StatelessWidget {
   const BuildResults({
