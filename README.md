@@ -1,6 +1,6 @@
 # conclase_movie_app
-
-A new Flutter project.
+In this project I create a movie information app.
+With two home screens, a tab bar, multiple api endpoints  used in calling the various movie categories.
 
 ## Getting Started
 
