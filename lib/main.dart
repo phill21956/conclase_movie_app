@@ -3,10 +3,9 @@ import 'screen/home_page/home_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             scaffoldBackgroundColor: const Color(0xff0D0F14),
-            brightness: Brightness.dark),
+            brightness: Brightness.light),
         home: const HomePage(),
       ),
     );
