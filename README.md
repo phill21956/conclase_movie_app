@@ -1,16 +1,8 @@
 # conclase_movie_app
-
-A new Flutter project.
+In this project I create a movie information app.
+With two home screens, a tab bar, multiple api endpoints  used in calling the various movie categories.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+https://user-images.githubusercontent.com/25683441/178113493-61690982-491a-478a-b110-9ced54c5a190.mp4
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
