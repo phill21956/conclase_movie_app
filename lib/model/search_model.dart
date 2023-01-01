@@ -106,6 +106,7 @@ class Result {
       };
 }
 
+// ignore: constant_identifier_names
 enum OriginalLanguage { EN }
 
 final originalLanguageValues = EnumValues({"en": OriginalLanguage.EN});

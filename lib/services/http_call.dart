@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import '../const/key.dart';
 
-mixin MovieApi {
+class MovieApi {
   var data = [];
   List<SearchModel> results = [];
   static http.Client client = http.Client();

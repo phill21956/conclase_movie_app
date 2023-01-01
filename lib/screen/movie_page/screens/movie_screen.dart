@@ -28,7 +28,7 @@ class _MovieScreenState extends State<MovieScreen> with MovieApi {
               Padding(
                   padding: EdgeInsets.fromLTRB(25.r, 35.r, 0.r, 10.r),
                   child: const MovieTextWidget(title: 'Coming Soon')),
-              const UpcomingMoviesWidget(),
+               UpcomingMoviesWidget(),
               Padding(
                   padding: EdgeInsets.fromLTRB(25.r, 0.r, 0.r, 0.r),
                   child: const MovieTextWidget(title: 'Trending Now')),
