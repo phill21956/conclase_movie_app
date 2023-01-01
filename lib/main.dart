@@ -13,16 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(390, 844),
+      designSize: const Size(390, 700),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, child) =>  MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             scaffoldBackgroundColor: const Color(0xff0D0F14),
-            brightness: Brightness.dark
-            ),
-       // themeMode: ThemeMode.dark,
+            brightness: Brightness.dark),
         home: const HomePage(),
       ),
     );

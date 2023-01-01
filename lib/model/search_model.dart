@@ -45,15 +45,15 @@ class Result {
     required this.genreIds,
     required this.id,
     required this.originalLanguage,
-   required this.originalTitle,
-   required this.overview,
+    required this.originalTitle,
+    required this.overview,
     required this.popularity,
-   required this.posterPath,
-   required this.releaseDate,
-   required this.title,
-   required this.video,
-   required this.voteAverage,
-   required this.voteCount,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
   final bool adult;
@@ -73,7 +73,7 @@ class Result {
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         adult: json["adult"],
-        backdropPath:json["backdrop_path"].toString(),
+        backdropPath: json["backdrop_path"].toString(),
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         originalLanguage: json["original_language"],

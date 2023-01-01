@@ -31,8 +31,8 @@ class TrendingMoviesCardWidget extends StatelessWidget {
                   image: DecorationImage(
                     image: imageProvider,
                     fit: BoxFit.cover,
+                    onError: (exception, stackTrace) => "",
                   )),
-              // child: Image.network(mov.posterPath),
             ),
           ),
         ),
