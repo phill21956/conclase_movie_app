@@ -9,7 +9,7 @@ import '../movies_content.dart';
 class UpcomingMoviesWidget extends StatefulWidget {
   const UpcomingMoviesWidget({
     Key? key,
-  //  required this.moviesCatalog,
+    //  required this.moviesCatalog,
   }) : super(key: key);
 
 //  final List<Results>? moviesCatalog;
@@ -34,35 +34,34 @@ class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget>
         future: _upcomingMoviesList,
         builder: (context, AsyncSnapshot<UpcomingMoviesModel> snapshot) {
           if (snapshot.hasData) {
-            List<Results>? moviesCatalog =
-                snapshot.data!.results.map((movies) => movies).toList();
+            List<Results>? moviesCatalog = snapshot.data!.results;
             return Expanded(
-              child: ListView(
+              child: ListView.builder(
+                itemCount: moviesCatalog.length,
                 scrollDirection: Axis.horizontal,
-                children: moviesCatalog
-                    .map((mov) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => MoviesDetails(
-                                      id: mov.id,
-                                          title1: mov.title,
-                                          title2: mov.overview,
-                                          imageUrl:
-                                              baseImageURL + mov.backdropPath!,
-                                          ratings: mov.voteAverage,
-                                        )),
-                              ),
-                              child: MoviesContentWidget(
-                                title: mov.title,
-                                image: baseImageURL + mov.backdropPath!,
-                              ),
-                            ),
-                          ],
-                        ))
-                    .toList(),
+                itemBuilder: (context, index) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => MoviesDetails(
+                                  id: moviesCatalog[index].id,
+                                  title1: moviesCatalog[index].title,
+                                  title2: moviesCatalog[index].overview,
+                                  imageUrl: baseImageURL +
+                                      moviesCatalog[index].backdropPath!,
+                                  ratings: moviesCatalog[index].voteAverage,
+                                )),
+                      ),
+                      child: MoviesContentWidget(
+                        title: moviesCatalog[index].title,
+                        image:
+                            baseImageURL + moviesCatalog[index].backdropPath!,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           } else if (snapshot.hasError) {

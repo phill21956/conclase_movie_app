@@ -18,11 +18,12 @@ class _MovieScreenState extends State<MovieScreen> with MovieApi {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Column(children: [
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height,
+          height: 600.h,
           width: MediaQuery.of(context).size.width,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -30,7 +31,7 @@ class _MovieScreenState extends State<MovieScreen> with MovieApi {
                   child: const MovieTextWidget(title: 'Coming Soon')),
               const UpcomingMoviesWidget(),
               Padding(
-                  padding: EdgeInsets.fromLTRB(25.r, 0.r, 0.r, 0.r),
+                  padding: EdgeInsets.fromLTRB(25.r, 0.r, 0.r, 10.r),
                   child: const MovieTextWidget(title: 'Trending Now')),
               const TrendingMovieWidget(),
             ],

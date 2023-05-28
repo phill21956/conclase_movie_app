@@ -23,8 +23,8 @@ class TrendingMoviesCardWidget extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: image,
             imageBuilder: (context, imageProvider) => Container(
-              width: 154,
-              height: 190,
+              width: 154.w,
+              height: 190.w,
               decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10),
@@ -43,7 +43,10 @@ class TrendingMoviesCardWidget extends StatelessWidget {
           ],
         ),
         SizedBox(height: 5.h),
-        Text(title),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(title),
+        ),
       ],
     );
   }

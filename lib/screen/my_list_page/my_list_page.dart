@@ -16,12 +16,12 @@ class MyListPage extends StatefulWidget {
 
 class _MyListPageState extends State<MyListPage> with MovieApi {
   // late Future<MovieModel> _movieList;
-  final db = MovieDatabase();
+  late MovieDatabase db;
   @override
-  // void initState() {
-  //   _movieList = getMovies();
-  //   super.initState();
-  // }
+  void initState() {
+    db = MovieDatabase();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +46,8 @@ class _MyListPageState extends State<MyListPage> with MovieApi {
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: MediaQuery.of(context).size.width /
-                              (MediaQuery.of(context).size.height),
+                          childAspectRatio:
+                              MediaQuery.of(context).size.width / (600.r),
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10),
                       //scrollDirection: Axis.vertical,
