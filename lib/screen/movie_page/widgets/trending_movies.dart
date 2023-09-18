@@ -17,22 +17,24 @@ class TrendingMoviesCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: EdgeInsets.all(10.r),
-          child: CachedNetworkImage(
-            imageUrl: image,
-            imageBuilder: (context, imageProvider) => Container(
-              width: 154,
-              height: 190,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                  )),
-              // child: Image.network(mov.posterPath),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(10.r),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              imageBuilder: (context, imageProvider) => Container(
+                width: 154.w,
+                height: 190.w,
+                decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    )),
+              ),
             ),
           ),
         ),
@@ -43,7 +45,13 @@ class TrendingMoviesCardWidget extends StatelessWidget {
           ],
         ),
         SizedBox(height: 5.h),
-        Text(title),
+        FittedBox(
+          child: Text(
+            title,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        )
       ],
     );
   }

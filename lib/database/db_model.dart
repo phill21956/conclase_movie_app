@@ -2,8 +2,6 @@ import 'package:conclase_movie_app/database/db_movie_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-
-
 class MovieDatabase {
   Database? _database;
   Future<Database> get database async {
@@ -69,7 +67,7 @@ class MovieDatabase {
           title: items[i]['title'],
           movieOverview: items[i]['title2'],
           image: items[i]['image'],
-            ratings: items[i]['ratings'],
+          ratings: items[i]['ratings'],
           isChecked: items[i]['isChecked'] == 1 ? true : false),
     );
   }

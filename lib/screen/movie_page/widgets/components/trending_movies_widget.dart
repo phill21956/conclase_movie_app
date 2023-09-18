@@ -1,5 +1,6 @@
 import 'package:conclase_movie_app/model/trending_movie_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../const/key.dart';
 import '../../../../services/http_call.dart';
@@ -18,13 +19,13 @@ class TrendingMovieWidget extends StatefulWidget {
   State<TrendingMovieWidget> createState() => _TrendingMovieWidgetState();
 }
 
-class _TrendingMovieWidgetState extends State<TrendingMovieWidget>
-    with MovieApi {
-  late Future<TrendingMovieModel> _movieList;
+class _TrendingMovieWidgetState extends State<TrendingMovieWidget> {
+  Future<TrendingMovieModel>? _movieList;
+  final MovieApi movieApi = Get.put(MovieApi());
+
   @override
   void initState() {
-    // _upcomingMoviesList = getUpcomingMovies();
-    _movieList = trendingMovies();
+    _movieList = movieApi.trendingMovies();
     super.initState();
   }
 
@@ -36,6 +37,7 @@ class _TrendingMovieWidgetState extends State<TrendingMovieWidget>
           if (snapshot.hasData) {
             List<TrendingResult>? trendingMoviesCatalog =
                 snapshot.data!.results.map((movies) => movies).toList();
+
             return Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,

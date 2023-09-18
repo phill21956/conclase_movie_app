@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MoviesContentWidget extends StatelessWidget {
-  const MoviesContentWidget({required this.title, required this.image, Key? key})
+  const MoviesContentWidget(
+      {required this.title, required this.image, Key? key})
       : super(key: key);
   final String title, image;
 
@@ -17,14 +18,14 @@ class MoviesContentWidget extends StatelessWidget {
             padding: EdgeInsets.all(10.r),
             child: CachedNetworkImage(
               imageUrl: image,
-               imageBuilder: (context, imageProvider) => Container(
+              imageBuilder: (context, imageProvider) => Container(
                 width: 341,
                 height: 191,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: imageProvider, fit: BoxFit.contain),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover),
                 ),
                 // child: Image.network(mov.posterPath),
               ),

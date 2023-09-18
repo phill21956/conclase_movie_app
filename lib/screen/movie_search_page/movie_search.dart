@@ -2,9 +2,12 @@ import 'package:conclase_movie_app/model/search_model.dart';
 import 'package:conclase_movie_app/services/http_call.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'widgets/build_result_widget.dart';
 
-class SearchMovies extends SearchDelegate with MovieApi {
+class SearchMovies extends SearchDelegate {
+  final MovieApi movieApi = Get.put(MovieApi());
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -30,7 +33,7 @@ class SearchMovies extends SearchDelegate with MovieApi {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder<SearchModel>(
-        future: searchMovies(query: query),
+        future: movieApi.searchMovies(query: query),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -56,23 +59,19 @@ class SearchMovies extends SearchDelegate with MovieApi {
         });
   }
 
- 
   @override
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder<SearchModel>(
-      future: searchMovies(query: query),
+      future: movieApi.searchMovies(query: query),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Center(
-            child: Text(
-              'Your search field may be empty'
-            ),
+            child: Text('Your search field may be empty'),
           );
-         
         }
         if (snapshot.data?.results == null) {
           return const Center(child: Text('Your search returned nothing'));
-         // ErrorListState(text: 'Your search returned nothing');
+          // ErrorListState(text: 'Your search returned nothing');
         }
         return ListView.builder(
           itemCount: snapshot.data?.results.length,
@@ -98,5 +97,4 @@ class SearchMovies extends SearchDelegate with MovieApi {
           ),
         ),
       );
-
 }
